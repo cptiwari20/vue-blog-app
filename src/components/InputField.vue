@@ -1,10 +1,9 @@
 <template>
-<div>
+  <div>
     <input v-model="name" />
     <!-- {{name}} -->
-</div>
+  </div>
 </template>
-
 
 <script>
 export default {
@@ -13,17 +12,17 @@ export default {
   props: {},
   computed: {
     name: {
-          get(){
-            return this.$store.state.name;
-          },
-          set(value){
-            return this.$store.commit('updateInput', value);
-          }
+      get() {
+        return this.$store.state.name;
+      },
+      set(value) {
+        return this.$store.commit("updateInput", value);
       }
+    }
   },
   methods: {
-    updateInput(e){
-      this.$store.commit('updateInput', e.target.value)
+    updateInput(e) {
+      this.$store.commit("updateInput", e.target.value);
     }
   }
 };
