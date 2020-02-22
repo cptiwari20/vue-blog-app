@@ -2,11 +2,9 @@
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <HelloWorld msg="Hello world" />
-    <InputField 
-      name='title'
-      value='til'
-      input='handleInput'
-    />
+    <InputField />
+
+    {{this.$store.state.name}}
   </div>
 </template>
 

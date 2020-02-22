@@ -1,24 +1,30 @@
 <template>
 <div>
-    <input :value="name"  v-on:input="$emit('input', $event.target.value)" />
-    {{name}}
+    <input v-model="name" />
+    <!-- {{name}} -->
 </div>
 </template>
 
 
 <script>
-console.log(name)
 export default {
   name: "InputField",
-  data: () => ({
-      message: 'some'
-  }),
-  props: {
-    input: Function,
-    name: String,
-    placeholder: String,
-    type: String,
-    value: String
+  data: () => ({}),
+  props: {},
+  computed: {
+    name: {
+          get(){
+            return this.$store.state.name;
+          },
+          set(value){
+            return this.$store.commit('updateInput', value);
+          }
+      }
+  },
+  methods: {
+    updateInput(e){
+      this.$store.commit('updateInput', e.target.value)
+    }
   }
 };
 </script>
