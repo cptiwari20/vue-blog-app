@@ -1,32 +1,74 @@
 <template>
-  <div id="app">
-    <router-view />
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-  </div>
+<v-app>
+  <v-card>
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant.sync="mini"
+      permanent
+    >
+      <v-list-item class="px-2">
+        <v-list-item-avatar>
+          <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-title>John Leider</v-list-item-title>
+
+        <v-btn
+          icon
+          @click.stop="mini = !mini"
+        >
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          link
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <router-link :to="item.path">
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </router-link> 
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+  </v-card>
+  <v-card>  
+      <router-view />
+  </v-card>
+</v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// import HelloWorld from "./components/HelloWorld";
 
-#nav {
-  padding: 30px;
-}
+export default {
+  name: "App",
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  components: {
+    // HelloWorld
+  },
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  data: () => ({
+    drawer: true,
+    items: [
+      { title: 'Home', icon: 'mdi-home-city', path: '/' },
+      { title: 'My Blogs', icon: 'mdi-account', path: '/blogs' },
+      { title: 'Create', icon: 'mdi-account-group-outline', path: '/create' },
+    ],
+    mini: true,
+  }),
+  methods: {
+    drawer(){}
+  }
+};
+</script>

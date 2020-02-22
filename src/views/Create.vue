@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    Welcome to the Blogging App
+    Create a new blog
     <PostIndex />
   </div>
 </template>
