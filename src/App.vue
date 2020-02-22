@@ -1,7 +1,6 @@
 <template>
 <v-app>
-  <v-card>
-    <v-navigation-drawer
+    <v-navigation-drawer app
       v-model="drawer"
       :mini-variant.sync="mini"
       permanent
@@ -40,11 +39,12 @@
           </router-link> 
         </v-list-item>
       </v-list>
-    </v-navigation-drawer>
-  </v-card>
-  <v-card>  
+    </v-navigation-drawer >
+  <v-content>  
+    <v-container fluid>
       <router-view />
-  </v-card>
+    </v-container>
+  </v-content>
 </v-app>
 </template>
 
